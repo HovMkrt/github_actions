@@ -1,4 +1,3 @@
-# Test trigger workflow
 name: Multiple shells commands
 on:
   push:
