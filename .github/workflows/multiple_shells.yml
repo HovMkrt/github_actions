@@ -2,6 +2,7 @@
 name: Multiple shells commands
 on:
   push:
+  workflow_dispatch:        
     branches:
       - "main"
   pull_request:
