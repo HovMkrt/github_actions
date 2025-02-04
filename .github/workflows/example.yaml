@@ -15,7 +15,7 @@ jobs:
 
       - name: Setup Git Remote
         run: |
-          git remote remove origin || true  # Удаляем origin, если он уже есть
+          git remote remove origin || true
           git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
           git config --global user.email "my-bot@bot.com"
           git config --global user.name "my-bot"
@@ -23,6 +23,11 @@ jobs:
           git checkout main
           git branch --set-upstream-to=origin/main
           git pull
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest  # Устанавливаем pytest
 
       - name: Run Pytest
         run: pytest >> log_pytest.txt  # Запуск тестов и сохранение в файл
